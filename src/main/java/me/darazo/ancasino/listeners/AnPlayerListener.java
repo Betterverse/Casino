@@ -4,16 +4,16 @@ import me.darazo.ancasino.AnCasino;
 import me.darazo.ancasino.slot.SlotMachine;
 import me.darazo.ancasino.slot.Type;
 import me.darazo.ancasino.slot.game.Game;
-
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerListener;
 
-public class AnPlayerListener extends PlayerListener {
+public class AnPlayerListener implements Listener{
 	
 	protected AnCasino plugin;
 	
@@ -21,6 +21,7 @@ public class AnPlayerListener extends PlayerListener {
 		this.plugin = plugin;
 	}
 	
+	@EventHandler
 	public void onPlayerInteract(PlayerInteractEvent event) {
 		
 		// Check if plugin is enabled
