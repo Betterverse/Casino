@@ -1,5 +1,6 @@
 package me.darazo.ancasino.command;
 
+import java.util.Random;
 import org.bukkit.entity.Player;
 
 import me.darazo.ancasino.AnCasino;
@@ -24,14 +25,15 @@ public class CasinoAdd extends AnCommand {
 			noPermission();
 			return true;
 		}
-		
 		// Valid command format
-		if(args.length >= 2 && args.length <= 3) {
+		if(args.length >= 1 && args.length <= 2) {
 						
+			Random ra = new Random();
+			String leName = player.getName()+ ra.nextInt();
 			// Slot does not exist
-			if(!plugin.slotData.isSlot(args[1])) {
+			if(!plugin.slotData.isSlot(leName)) {
 							
-				this.name = args[1];
+				this.name = leName;
 								
 					// Valid type
 				if(args.length < 3) {
@@ -39,8 +41,8 @@ public class CasinoAdd extends AnCommand {
 					this.type = "default";
 				}
 				
-				else if(plugin.typeData.isType(args[2])) {
-					String typeName = args[2];
+				else if(plugin.typeData.isType(args[1])) {
+					String typeName = args[1];
 					
 					// Has type permission
 					if(!plugin.permission.canCreate(player, typeName)) {
@@ -54,7 +56,7 @@ public class CasinoAdd extends AnCommand {
 				
 				// Invalid type
 				else {
-					sendMessage("Invalid type " + args[2]);
+					sendMessage("Invalid type " + args[1]);
 					return true;
 				}
 				
