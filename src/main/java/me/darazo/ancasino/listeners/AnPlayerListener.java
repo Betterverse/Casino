@@ -28,7 +28,9 @@ public class AnPlayerListener implements Listener{
 		if(plugin.isEnabled()) {
 			Player player = event.getPlayer();
 			Block b = event.getClickedBlock();
-				
+			
+			if(b == null) return;
+			
 			// Left clicked note block
 			if(b.getType() == Material.NOTE_BLOCK) {
 					
